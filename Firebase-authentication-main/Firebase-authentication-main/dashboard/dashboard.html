@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Facebook</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+:root {
+    --blue: #1877f2;
+    --blue-dark: #166fe5;
+    --ink: #1c1e21;
+    --muted: #65676b;
+    --bg: #f0f2f5;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: var(--ink);
+    background: var(--bg);
+}
+
+.topbar {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--blue);
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    background: #e4e6eb;
+    color: #050505;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background: #d8dadf;
+}
+
+.dashboard-container {
+    width: 100%;
+    max-width: 680px;
+    margin: auto;
+    padding: 20px 16px;
+}
+
+.welcome-section {
+    margin-bottom: 20px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.eyebrow {
+    margin-bottom: 6px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+#greeting-text {
+    font-size: 24px;
+    font-weight: 700;
+    color: #1c1e21;
+    margin-bottom: 8px;
+}
+
+.welcome-description {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0;
+}
+
+.todo-card {
+    padding: 20px;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.todo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.todo-header h3 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.task-label {
+    padding: 6px 12px;
+    border-radius: 20px;
+    background: #e7f3ff;
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.todo-form {
+    display: flex;
+    gap: 10px;
+}
+
+#todo-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ccd0d5;
+    border-radius: 20px;
+    background: #f0f2f5;
+    outline: none;
+}
+
+#todo-input:focus {
+    background: white;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 2px #1877f233;
+}
+
+#todo-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    background: var(--blue);
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#todo-btn:hover {
+    background: var(--blue-dark);
+}
+
+#todos {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+#todos li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid #e4e6eb;
+    border-radius: 8px;
+    background: #f7f8fa;
+}
+
+.bottom-note {
+    margin-top: 20px;
+    color: var(--muted);
+    text-align: center;
+    font-size: 12px;
+}
+    </style>
+</head>
+<body>
+    <nav class="topbar">
+        <div class="brand">
+            <span>facebook</span>
+        </div>
+        <button type="button" id="logout" class="logout-btn">Logout</button>
+    </nav>
+
+    <main class="dashboard-container">
+        <section class="welcome-section">
+            <div class="eyebrow">News Feed</div>
+            <h2 id="greeting-text">Loading dashboard...</h2>
+            <p class="welcome-description">Keep your tasks organized and make progress one step at a time.</p>
+        </section>
+
+        <section class="todo-card">
+            <div class="todo-header">
+                <h3>Create Todo</h3>
+                <span class="task-label">TASK MANAGER</span>
+            </div>
+
+            <form id="todo-form" class="todo-form">
+                <input type="text" id="todo-input" placeholder="What's on your mind, or task to do?" maxlength="200" autocomplete="off" required>
+                <button type="submit" id="todo-btn">Post</button>
+            </form>
+
+            <p id="todo-message" role="status" aria-live="polite" class="mt-2 text-danger small"></p>
+            <ul id="todos"></ul>
+        </section>
+
+        <div class="bottom-note">Facebook © 2026</div>
+    </main>
+
+    <script type="module" src="./dashboard.js"></script>
+</body>
+</html>
+
